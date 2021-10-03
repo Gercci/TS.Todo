@@ -13,7 +13,7 @@ export const App = () => {
     }
     return (
         <div className="App">
-            <TodoList todos={state} onAddTodo={onAddTodo} onRemoveTodo={onRemoveTodo} />
+            <TodoList todos={state} addTodo={addTodo} removeTodo={removeTodo} />
         </div>
     )
 };
