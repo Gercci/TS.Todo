@@ -1,15 +1,16 @@
 import { AddForm as AddFormArea } from "./elements";
-import React, {FormEvent, useState} from "react";
-import {AddTodoFn} from "../index";
+import React, {FormEvent, useContext, useState} from "react";
+import {TodoContext} from "../Model/TodoContext";
 
-export const AddForm: React.FC<{ onAdd: AddTodoFn }> = ({ onAdd }) => {
+export const AddForm: React.FC = () => {
+    const { addTodo } = useContext(TodoContext)
     const initialValue = ''
     const [ areaValue, setAreaValue ] = useState(initialValue)
     const onChangeArea = (e: FormEvent<HTMLTextAreaElement>) => {
         setAreaValue(e.currentTarget.value)
     }
     const onClick: () => void = () => {
-        onAdd(areaValue)
+        if (addTodo) addTodo(areaValue)
         setAreaValue(initialValue)
     }
     return (

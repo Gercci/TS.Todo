@@ -1,3 +1,5 @@
+import {AddTodo, AddTodoPayload, RemoveTodo, Todo, TodoReducer, Todos} from "../todo.types";
+
 export const initialState: Todos = [
     {
         id: 0,
@@ -6,7 +8,7 @@ export const initialState: Todos = [
     },
 ]
 
-const getNextAvailableId = (todos: Todos): number => todos[todos.length - 1].id + 1
+const getNextAvailableId = (todos: Todos): number => todos.length ? todos[todos.length - 1].id + 1 : 0
 
 export const todoReducer: TodoReducer = (state, action) => {
         switch (action.type) {
